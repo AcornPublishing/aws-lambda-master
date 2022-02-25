@@ -1,0 +1,11 @@
+{
+  "description": "외부 애플리케이션에서 Lambda를 호출하는 Node.js로 작성된 Lambda 함수",
+  "role": "arn:aws:iam::<계정ID>:role/myWeatherLambdaRole",
+  "handler": "index.handler",
+  "environment": {
+    "snsTopicARN" : "arn:aws:sns:us-east-1:<계정ID>:myWeatherSNS",
+    "kmsEncryptedAPIKey" : "<API 키>",
+    "language" : "en",
+    "units" : "metric"
+  }
+}

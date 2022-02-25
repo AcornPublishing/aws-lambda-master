@@ -1,0 +1,16 @@
+{
+  "coreThing": {
+    "caPath": "rootca.pem",
+    "certPath": "<CRT_파일명>",
+    "keyPath": "<개인키_파일명>",
+    "thingArn": "<장치_ARN>",
+    "iotHost": "<IoT_Host_접두사>.iot.[AWS_리전].amazonaws.com",
+    "ggHost": "greengrass.iot.[AWS_리전].amazonaws.com",
+    "keepAlive": 600
+  },
+  "runtime": {
+    "cgroup": {
+      "useSystemd": "yes"
+    }
+  }
+}

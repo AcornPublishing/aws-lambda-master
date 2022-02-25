@@ -1,0 +1,6 @@
+{
+  "description": "DynamoDB를 트리거로 사용하는 Node.js로 작성된 Lambda 함수. 삽입된 IP 주소의 값을 확인하고 유효하지 않으면 삭제한다.",
+  "role": "arn:aws:iam::<계정ID>:role/myLambdaDynamoFuncRole",
+  "handler": "index.handler",
+  "environment": {}
+}

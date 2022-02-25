@@ -1,0 +1,72 @@
+# 서버리스
+#
+# 해당 파일은 서비스의 기본 구성 파일이다. 여기에서 기본값을 변경해서 사용할 수 있다.
+# 상세 제어를 원한다면 더 많은 설정 옵션을 추가할 수 있다. 일부 예제 주석을 달아뒀으니 설정을 테스트해보려면 주석을 제거하자.
+#
+# 전체 설정 옵션은 docs.serverless.com를 참고하자.
+#
+# 건투를 빈다!
+
+service: my-serverless-app
+
+# 특정 서버리스 버전으로 배포하려면 아래와 같이 설정하면 된다. 자세한 내용은 문서를 참고하자.
+# frameworkVersion : "= X.X.X"
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+
+# 기본 값을 변경해서 사용할 수 있다.
+#  stage: dev
+#  region: us-east-1
+
+# 여기에서 Lambda 함수의 IAM 역할을 구성할 수 있다.
+  iamRoleStatements:
+  - Effect: Allow
+    Action:
+      - logs:CreateLogGroup
+      - logs:CreateLogStream
+      - logs:PutLogEvents
+      - dynamodb:PutItem
+    Resource: "*"
+
+# 패키징 정보를 아래와 같이 설정할 수 있다.
+#package:
+#  include:
+#    - include-me.js
+#    - include-me-dir/**
+#  exclude:
+#    - exclude-me.js
+#    - exclude-me-dir/**
+
+functions:
+  hello:
+    handler: index.handler
+    name: serverless-apiGW-Dynamodb
+    events:
+     - http:
+          path: /food/{name}/{description}
+          method: post
+    environment:
+      TABLE_NAME: ${self:resources.Resources.foodTable.Properties.TableName}
+
+# 여기에서 CloudFormation 자원 템플릿을 추가할 수 있다.
+resources:
+  Resources:
+    foodTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: foodTable-serverless
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+          - AttributeName: name
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+          - AttributeName: name
+            KeyType: RANGE
+        ProvisionedThroughput:
+          ReadCapacityUnits: 5
+          WriteCapacityUnits: 5

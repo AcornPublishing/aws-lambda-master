@@ -1,0 +1,9 @@
+{
+  "description": "SNS 서비스를 통해 Slack과 Lambda 간 통합을 보여주는 Node.js로 작성된 Lambda 함수",
+  "role": "arn:aws:iam::<계정ID>:role/mySlackBotRole",
+  "handler": "index.handler",
+  "environment": {
+    "slackChannel" : "<채널 이름>",
+    "kmsEncryptedHookUrl" : "<프로토콜을 제외한 슬랙 훅 URL>"
+  }
+}

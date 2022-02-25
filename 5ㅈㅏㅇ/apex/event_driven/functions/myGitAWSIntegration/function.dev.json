@@ -1,0 +1,10 @@
+{
+  "description": "SNS 서비스를 통해 Git과 Lambda 간 통합을 보여주는 Node.js로 작성된 Lambda 함수",
+  "role": "arn:aws:iam::<계정ID>:role/myGitRole",
+  "handler": "index.handler",
+  "environment": {
+    "kmsEncryptedAPIKey" : "<API 키>",
+    "taskListID" : "<Task List ID>",
+    "teamworkCompany" : "<팀워크 회사 이름>"
+  }
+}

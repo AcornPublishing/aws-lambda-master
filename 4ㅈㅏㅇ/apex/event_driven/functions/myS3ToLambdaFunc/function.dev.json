@@ -1,0 +1,8 @@
+{
+  "description": "S3를 트리거로 사용하는 Node.js로 작성된 Lambda 함수. S3에 업로드된 이미지를 변환해서 다른 S3로 업로드한다.",
+  "role": "arn:aws:iam::<계정ID>:role/myLambdaS3FuncRole",
+  "handler": "index.handler",
+  "environment": {
+  	"TRANSFORM_FUNC" : "negative"
+  }
+}

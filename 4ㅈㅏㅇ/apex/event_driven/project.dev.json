@@ -1,0 +1,10 @@
+{
+  "name": "eventDriven",
+  "description": "미리 구성된 트리거를 사용하는 이벤트 기반의 사용 사례",
+  "profile": "example",
+  "runtime": "nodejs4.3",
+  "memory": 128,
+  "timeout": 60,
+  "role": "arn:aws:iam::<계정ID>:role/myApexLambdaProjRole",
+  "environment": {}
+}

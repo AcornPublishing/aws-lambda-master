@@ -1,0 +1,6 @@
+{
+  "description": "Kinesis를 트리거로 사용하는 Node.js로 작성된 Lambda 함수. 스트림에서 수신한 오류 메시지를 SNS로 전송한다.",
+  "role": "arn:aws:iam::<계정ID>:role/myLambdaKinesisFuncRole",
+  "handler": "index.handler",
+  "environment": {}
+}
